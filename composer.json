@@ -1,0 +1,67 @@
+{
+    "name": "coderflex/laravel-ticket",
+    "description": "Laravel Ticket System, to help you manage your tickets eaisly",
+    "keywords": [
+        "Coderflex",
+        "laravel",
+        "laravel-ticket"
+    ],
+    "homepage": "https://github.com/coderflexx/laravel-ticket",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Oussama Sid",
+            "email": "oussama@coderflex.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "spatie/laravel-package-tools": "^1.13.0",
+        "illuminate/contracts": "^9.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.0",
+        "nunomaduro/collision": "^6.0",
+        "nunomaduro/larastan": "^2.0.1",
+        "orchestra/testbench": "^7.0",
+        "pestphp/pest": "^1.21",
+        "pestphp/pest-plugin-laravel": "^1.1",
+        "phpstan/extension-installer": "^1.1",
+        "phpstan/phpstan-deprecation-rules": "^1.0",
+        "phpstan/phpstan-phpunit": "^1.0",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Coderflex\\LaravelTicket\\": "src",
+            "Coderflex\\LaravelTicket\\Database\\Factories\\": "database/factories"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Coderflex\\LaravelTicket\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "analyse": "vendor/bin/phpstan analyse",
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "format": "vendor/bin/pint"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Coderflex\\LaravelTicket\\LaravelTicketServiceProvider"
+            ],
+            "aliases": {
+                "LaravelTicket": "Coderflex\\LaravelTicket\\Facades\\LaravelTicket"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
