@@ -39,7 +39,7 @@ trait TicketScope
     }
 
     /**
-     * Get resolved tickets
+     * Get unresolved tickets
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
@@ -49,7 +49,7 @@ trait TicketScope
     }
 
     /**
-     * Get resolved tickets
+     * Get locked tickets
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
@@ -59,7 +59,7 @@ trait TicketScope
     }
 
     /**
-     * Get resolved tickets
+     * Get unlocked tickets
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
@@ -69,7 +69,7 @@ trait TicketScope
     }
 
     /**
-     * Get resolved tickets
+     * Get low priority tickets
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
@@ -79,7 +79,7 @@ trait TicketScope
     }
 
     /**
-     * Get resolved tickets
+     * Get normal priority tickets
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
@@ -89,7 +89,7 @@ trait TicketScope
     }
 
     /**
-     * Get resolved tickets
+     * Get high priority tickets
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
