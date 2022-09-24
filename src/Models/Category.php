@@ -4,6 +4,7 @@ namespace Coderflex\LaravelTicket\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
@@ -19,23 +20,13 @@ class Category extends Model
     protected $guarded = [];
 
     /**
-     * Get Labelable relationship
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
-     */
-    public function categorizable(): MorphTo
-    {
-        return $this->morphTo();
-    }
-
-    /**
      * Get Tickets RelationShip
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function tickets(): HasMany
+    public function tickets(): BelongsToMany
     {
-        return $this->hasMany(Ticket::class);
+        return $this->belongsToMany(Ticket::class);
     }
 
     /**

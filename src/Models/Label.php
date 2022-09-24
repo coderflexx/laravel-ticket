@@ -4,7 +4,7 @@ namespace Coderflex\LaravelTicket\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Label extends Model
@@ -19,23 +19,13 @@ class Label extends Model
     protected $guarded = [];
 
     /**
-     * Get Labelable relationship
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
-     */
-    public function labelable(): MorphTo
-    {
-        return $this->morphTo();
-    }
-
-    /**
      * Get Tickets RelationShip
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function tickets(): BelongsTo
+    public function tickets(): BelongsToMany
     {
-        return $this->belongsTo(Ticket::class);
+        return $this->belongsToMany(Ticket::class);
     }
 
     /**

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User;
 
 /**
@@ -59,21 +59,21 @@ class Ticket extends Model
     /**
      * Get Categories RelationShip
      *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function categories(): MorphMany
+    public function categories(): BelongsToMany
     {
-        return $this->morphMany(Category::class, 'categorizable');
+        return $this->belongsToMany(Category::class, 'categorizable');
     }
 
     /**
      * Get Labels RelationShip
      *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function labels(): MorphMany
+    public function labels(): BelongsToMany
     {
-        return $this->morphMany(Label::class, 'labelable');
+        return $this->belongsToMany(Label::class, 'labelable');
     }
 
     /**
