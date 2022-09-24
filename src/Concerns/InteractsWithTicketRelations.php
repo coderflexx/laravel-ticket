@@ -14,7 +14,7 @@ trait InteractsWithTicketRelations
      */
     public function attachLabels($id, array $attributes = [], $touch = true)
     {
-        return $this->labels()->attach($id, $attributes, $touch);
+        $this->labels()->attach($id, $attributes, $touch);
     }
 
     /**
