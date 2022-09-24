@@ -15,7 +15,7 @@ trait TicketScope
      */
     public function scopeClosed(Builder $builder): Builder
     {
-        return $builder->where('status', Status::CLOSED);
+        return $builder->where('status', Status::CLOSED->value);
     }
 
     /**
@@ -25,7 +25,7 @@ trait TicketScope
      */
     public function scopeOpened(Builder $builder): Builder
     {
-        return $builder->where('status', Status::OPEN);
+        return $builder->where('status', Status::OPEN->value);
     }
 
     /**
@@ -69,13 +69,23 @@ trait TicketScope
     }
 
     /**
+     * Get custom priority tickets
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeWithPriority(Builder $builder, string $priority): Builder
+    {
+        return $builder->where('priority', $priority);
+    }
+
+    /**
      * Get low priority tickets
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeWithLowPriority(Builder $builder): Builder
     {
-        return $builder->where('priority', Priority::LOW);
+        return $builder->where('priority', Priority::LOW->value);
     }
 
     /**
@@ -85,7 +95,7 @@ trait TicketScope
      */
     public function scopeWithNormalPriority(Builder $builder): Builder
     {
-        return $builder->where('priority', Priority::NORMAL);
+        return $builder->where('priority', Priority::NORMAL->value);
     }
 
     /**
@@ -95,6 +105,6 @@ trait TicketScope
      */
     public function scopeWithHighPriority(Builder $builder): Builder
     {
-        return $builder->where('priority', Priority::HIGH);
+        return $builder->where('priority', Priority::HIGH->value);
     }
 }

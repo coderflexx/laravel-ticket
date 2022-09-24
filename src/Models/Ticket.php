@@ -2,6 +2,7 @@
 
 namespace Coderflex\LaravelTicket\Models;
 
+use Coderflex\LaravelTicket\Concerns\InteractsWithTickets;
 use Coderflex\LaravelTicket\Scopes\TicketScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -10,10 +11,23 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Foundation\Auth\User;
 
+/**
+ * Coderflex\LaravelTicket\Models\Ticket
+ *
+ * @property string $uuid
+ * @property int $user_id
+ * @property string $title
+ * @property string $message
+ * @property string $priority
+ * @property string $status
+ * @property bool $is_resolved
+ * @property bool $is_locked
+ */
 class Ticket extends Model
 {
     use HasFactory;
     use TicketScope;
+    use InteractsWithTickets;
 
     /**
      * The table associated with the model.
