@@ -10,11 +10,13 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('ticket_comments', function (Blueprint $table) {
+        $tableName = config('laravel_ticket.table_names.categories', 'categories');
+
+        Schema::create($tableName, function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('laravel_ticket_id');
-            $table->text('comment');
+            $table->string('name');
+            $table->string('slug');
+            $table->boolean('is_visible')->default(true);
             $table->timestamps();
         });
     }

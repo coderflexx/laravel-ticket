@@ -16,12 +16,12 @@ class LaravelTicketServiceProvider extends PackageServiceProvider
          */
         $package
             ->name('laravel-ticket')
-            ->hasConfigFile()
+            ->hasConfigFile('laravel_ticket')
             ->hasMigrations(
-                'create_laravel_tickets_table',
-                'create_ticket_comments_table',
-                'create_ticket_categories_table',
-                'create_ticket_labels_table',
+                'create_tickets_table',
+                'create_messages_table',
+                'create_categories_table',
+                'create_labels_table',
             );
     }
 }

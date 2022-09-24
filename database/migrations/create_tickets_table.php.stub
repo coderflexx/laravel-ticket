@@ -10,7 +10,9 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('laravel_tickets', function (Blueprint $table) {
+        $tableName = config('laravel_ticket.table_names.tickets', 'tickets');
+
+        Schema::create($tableName, function (Blueprint $table) {
             $table->id();
             $table->uuid('uuid');
             $table->foreignId('user_id');

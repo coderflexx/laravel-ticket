@@ -10,9 +10,10 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('ticket_categories', function (Blueprint $table) {
+        $tableName = config('laravel_ticket.table_names.labels', 'labels');
+
+        Schema::create($tableName, function (Blueprint $table) {
             $table->id();
-            $table->morphs('categorizable');
             $table->string('name');
             $table->string('slug');
             $table->boolean('is_visible')->default(true);

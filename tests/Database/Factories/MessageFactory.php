@@ -2,14 +2,14 @@
 
 namespace Coderflex\LaravelTicket\Tests\Database\Factories;
 
-use Coderflex\LaravelTicket\Models\Comment;
+use Coderflex\LaravelTicket\Models\Message;
 use Coderflex\LaravelTicket\Models\Ticket;
 use Coderflex\LaravelTicket\Tests\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class CommentFactory extends Factory
+class MessageFactory extends Factory
 {
-    protected $model = Comment::class;
+    protected $model = Message::class;
 
     public function definition()
     {

@@ -12,13 +12,6 @@ class Label extends Model
     use HasFactory;
 
     /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'ticket_labels';
-
-    /**
      * The attributes that aren't mass assignable.
      *
      * @var array<string>|bool
@@ -43,5 +36,18 @@ class Label extends Model
     public function tickets(): BelongsTo
     {
         return $this->belongsTo(Ticket::class);
+    }
+
+    /**
+     * Get the table associated with the model.
+     *
+     * @return string
+     */
+    public function getTable()
+    {
+        return config(
+            'laravel_ticket.table_names.labels',
+            parent::getTable()
+        );
     }
 }

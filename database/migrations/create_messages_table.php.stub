@@ -10,12 +10,13 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('ticket_labels', function (Blueprint $table) {
+        $tableName = config('laravel_ticket.table_names.messages', 'messages');
+
+        Schema::create($tableName, function (Blueprint $table) {
             $table->id();
-            $table->morphs('labelable');
-            $table->string('name');
-            $table->string('slug');
-            $table->boolean('is_visible')->default(true);
+            $table->foreignId('user_id');
+            $table->foreignId('laravel_ticket_id');
+            $table->text('comment');
             $table->timestamps();
         });
     }

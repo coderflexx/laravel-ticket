@@ -12,13 +12,6 @@ class Category extends Model
     use HasFactory;
 
     /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'ticket_categories';
-
-    /**
      * The attributes that aren't mass assignable.
      *
      * @var array<string>|bool
@@ -43,5 +36,18 @@ class Category extends Model
     public function tickets(): HasMany
     {
         return $this->hasMany(Ticket::class);
+    }
+
+    /**
+     * Get the table associated with the model.
+     *
+     * @return string
+     */
+    public function getTable()
+    {
+        return config(
+            'laravel_ticket.table_names.categories',
+            parent::getTable()
+        );
     }
 }

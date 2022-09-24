@@ -31,10 +31,10 @@ class TestCase extends Orchestra
         config()->set('database.default', 'testing');
 
         $migrations = [
-            include __DIR__.'/../database/migrations/create_laravel_tickets_table.php.stub',
-            include __DIR__.'/../database/migrations/create_ticket_categories_table.php.stub',
-            include __DIR__.'/../database/migrations/create_ticket_comments_table.php.stub',
-            include __DIR__.'/../database/migrations/create_ticket_labels_table.php.stub',
+            include __DIR__.'/../database/migrations/create_tickets_table.php.stub',
+            include __DIR__.'/../database/migrations/create_categories_table.php.stub',
+            include __DIR__.'/../database/migrations/create_messages_table.php.stub',
+            include __DIR__.'/../database/migrations/create_labels_table.php.stub',
 
             // Tests Migration
             include __DIR__.'/Database/Migrations/create_users_table.php',

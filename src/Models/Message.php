@@ -6,16 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Comment extends Model
+class Message extends Model
 {
     use HasFactory;
-
-    /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'ticket_comments';
 
     /**
      * The attributes that aren't mass assignable.
@@ -32,5 +25,18 @@ class Comment extends Model
     public function ticket(): BelongsTo
     {
         return $this->belongsTo(Ticket::class, 'laravel_ticket_id');
+    }
+
+    /**
+     * Get the table associated with the model.
+     *
+     * @return string
+     */
+    public function getTable()
+    {
+        return config(
+            'laravel_ticket.table_names.messages',
+            parent::getTable()
+        );
     }
 }

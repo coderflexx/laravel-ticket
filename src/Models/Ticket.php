@@ -30,13 +30,6 @@ class Ticket extends Model
     use InteractsWithTickets;
 
     /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'laravel_tickets';
-
-    /**
      * The attributes that aren't mass assignable.
      *
      * @var array<string>|bool
@@ -54,13 +47,13 @@ class Ticket extends Model
     }
 
     /**
-     * Get Comments RelationShip
+     * Get Messages RelationShip
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function comments(): HasMany
     {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Message::class);
     }
 
     /**
@@ -81,5 +74,18 @@ class Ticket extends Model
     public function labels(): MorphMany
     {
         return $this->morphMany(Label::class, 'labelable');
+    }
+
+    /**
+     * Get the table associated with the model.
+     *
+     * @return string
+     */
+    public function getTable()
+    {
+        return config(
+            'laravel_ticket.table_names.tickets',
+            parent::getTable()
+        );
     }
 }
