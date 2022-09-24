@@ -16,6 +16,20 @@ return [
         'categories' => 'categories',
         'labels' => 'labels',
         'messages' => 'messages',
+        'label_ticket' => [
+            'table' => 'label_ticket',
+            'columns' => [
+                'label_foreign_id' => 'label_id',
+                'ticket_foreign_id' => 'ticket_id',
+            ],
+        ],
+        'category_ticket' => [
+            'table' => 'category_ticket',
+            'columns' => [
+                'category_foreign_id' => 'category_id',
+                'ticket_foreign_id' => 'ticket_id',
+            ],
+        ],
     ],
 
 ];
