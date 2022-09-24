@@ -2,6 +2,7 @@
 
 namespace Coderflex\LaravelTicket\Models;
 
+use Coderflex\LaravelTicket\Scopes\TicketScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -12,6 +13,7 @@ use Illuminate\Foundation\Auth\User;
 class Ticket extends Model
 {
     use HasFactory;
+    use TicketScope;
 
     /**
      * The table associated with the model.
