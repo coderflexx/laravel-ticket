@@ -77,11 +77,11 @@ class Ticket extends Model
         $table = config('laravel_ticket.table_names.label_ticket', 'label_ticket');
 
         return $this->belongsToMany(
-                Label::class,
-                $table['table'],
-                $table['columns']['ticket_foreign_id'],
-                $table['columns']['label_foreign_id'],
-            );
+            Label::class,
+            $table['table'],
+            $table['columns']['ticket_foreign_id'],
+            $table['columns']['label_foreign_id'],
+        );
     }
 
     /**

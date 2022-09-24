@@ -6,7 +6,7 @@ trait InteractsWithTicketRelations
 {
     /**
      * Associate Labels into an existing ticket
-     * 
+     *
      * @param  mixed  $id
      * @param  array  $attributes
      * @param  bool  $touch
