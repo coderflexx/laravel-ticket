@@ -2,7 +2,7 @@
 
 namespace Coderflex\LaravelTicket\Models;
 
-use Coderflex\LaravelTicket\Concerns\InteractsWithTickets;
+use Coderflex\LaravelTicket\Concerns;
 use Coderflex\LaravelTicket\Scopes\TicketScope;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -27,7 +27,8 @@ class Ticket extends Model
 {
     use HasFactory;
     use TicketScope;
-    use InteractsWithTickets;
+    use Concerns\InteractsWithTickets;
+    use Concerns\InteractsWithTicketRelations;
 
     /**
      * The attributes that aren't mass assignable.
@@ -73,7 +74,14 @@ class Ticket extends Model
      */
     public function labels(): BelongsToMany
     {
-        return $this->belongsToMany(Label::class, 'labelable');
+        $table = config('laravel_ticket.table_names.label_ticket', 'label_ticket');
+
+        return $this->belongsToMany(
+                Label::class,
+                $table['table'],
+                $table['columns']['ticket_foreign_id'],
+                $table['columns']['label_foreign_id'],
+            );
     }
 
     /**

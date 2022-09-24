@@ -16,6 +16,32 @@ it('creates a ticket with associated user', function () {
     $this->assertEquals($user->tickets()->first()->title, 'IT Support');
 });
 
-it('associates a ticket with labels', function () {
-    // $labels = Label::factory()->times(3)->create();
+it('associates labels to a ticket', function () {
+    $labels = Label::factory()->times(3)->create();
+    $ticket = Ticket::factory()->create();
+
+    $ticket->attachLabels($labels->pluck('id'));
+
+    $this->assertEquals($ticket->labels->count(), 3);
+});
+
+it('sync labels to a ticket', function () {
+    $labels = Label::factory()->times(2)->create();
+    $ticket = Ticket::factory()->create();
+
+    $ticket->syncLabels($labels->pluck('id'));
+
+    $this->assertEquals($ticket->labels->count(), 2);
+});
+
+it('sync labels to a ticket without detaching', function () {
+    $labels = Label::factory()->times(3)->create();
+    $ticket = Ticket::factory()->create();
+    $ticket->attachLabels($labels->pluck('id'));
+
+    $anotherlabels = Label::factory()->times(2)->create();
+
+    $ticket->syncLabels($anotherlabels->pluck('id'), false);
+
+    $this->assertEquals($ticket->labels->count(), 5);
 });
