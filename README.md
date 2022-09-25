@@ -162,11 +162,11 @@ The `ticket` model has also a list of methods for interacting with another relat
 | Method  | Arguments  |  Example  |  Description  |
 |---|---|---|---|
 |  `attachLabels` |`mixed` id, `array` attributes, `bool` touch | associate labels into an existing ticket  | `$ticket->attachLabels([1,2,3,4])` |
-|  `syncLabels` |`Model|array` ids, `bool` detouching | associate labels into an existing ticket  | `$ticket->syncLabels([1,2,3,4])` |
+|  `syncLabels` |`Model/array` ids, `bool` detouching | associate labels into an existing ticket  | `$ticket->syncLabels([1,2,3,4])` |
 |  `attachCategories` |`mixed` id, `array` attributes, `bool` touch | associate categories into an existing ticket  | `$ticket->attachCategories([1,2,3,4])` |
-|  `syncCategories` |`Model|array` ids, `bool` detouching | associate categories into an existing ticket  | `$ticket->syncCategories([1,2,3,4])` |
+|  `syncCategories` |`Model/array` ids, `bool` detouching | associate categories into an existing ticket  | `$ticket->syncCategories([1,2,3,4])` |
 |  `message` |`string` message | add new message on an existing ticket  | `$ticket->message('A message in a ticket')` |
-|  `messageAsUser` |`Model|null` user, `string` message | add new message on an existing ticket as a deffrent user  | `$ticket->messageAsUser($user, 'A message in a ticket')` |
+|  `messageAsUser` |`Model/null` user, `string` message | add new message on an existing ticket as a deffrent user  | `$ticket->messageAsUser($user, 'A message in a ticket')` |
 
 > The `attachCategories` and `syncCategories` methods, is an alternative for `attach` and `sync` laravel methods, and if you want to learn more, please take a look at this [link](https://laravel.com/docs/9.x/eloquent-relationships#attaching-detaching)
 
