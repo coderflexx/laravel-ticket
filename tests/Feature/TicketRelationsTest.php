@@ -77,3 +77,24 @@ it('sync categories to a ticket without detaching', function () {
     $this->assertEquals($ticket->categories->count(), 5);
 });
 
+it('can create a message inside the ticket by authenticated user', function () {
+    $this->actingAs(User::factory()->create());
+
+    $ticket = Ticket::factory()->create();
+
+    $ticket->message('How are you today?');
+
+    $this->assertEquals($ticket->messages->count(), 1);
+});
+
+it('can create a message inside the ticket by another user', function () {
+    $user = $this->actingAs(User::factory()->create());
+    $anotherUser = User::factory()->create();
+
+    $ticket = Ticket::factory()->create();
+
+    $ticket->messageAsUser($anotherUser, 'How are you today?');
+
+    $this->assertEquals($ticket->messages->count(), 1);
+    $this->assertEquals($ticket->messages->first()->user_id, $anotherUser->id);
+});

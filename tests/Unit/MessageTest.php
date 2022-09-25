@@ -8,20 +8,20 @@ it('can store a message', function () {
         'title' => 'Laravel is cool!',
     ]);
 
-    $message = Message::factory()
-                ->create([
-                    'laravel_ticket_id' => $ticket->id,
-                    'comment' => 'Message from a ticket',
-                ]);
-
     $tableName = config(
         'laravel_ticket.table_names.messages',
         'messages'
     );
 
-    $this->assertDatabaseHas($tableName, [
-        'laravel_ticket_id' => $ticket->id,
-        'comment' => 'Message from a ticket',
+    $message = Message::factory()
+                ->create([
+                    $tableName['columns']['ticket_foreing_id'] => $ticket->id,
+                    'message' => 'Message from a ticket',
+                ]);
+
+    $this->assertDatabaseHas($tableName['table'], [
+        $tableName['columns']['ticket_foreing_id'] => $ticket->id,
+        'message' => 'Message from a ticket',
     ]);
 
     $this->assertEquals($message->count(), 1);

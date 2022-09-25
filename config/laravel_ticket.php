@@ -15,7 +15,12 @@ return [
         'tickets' => 'tickets',
         'categories' => 'categories',
         'labels' => 'labels',
-        'messages' => 'messages',
+        'messages' => [
+            'table' => 'messages',
+            'columns' => [
+                'ticket_foreing_id' => 'ticket_id',
+            ],
+        ],
         'label_ticket' => [
             'table' => 'label_ticket',
             'columns' => [

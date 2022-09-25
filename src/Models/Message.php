@@ -6,6 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+/**
+ * Coderflex\LaravelTicket\Models\Message
+ *
+ * @property int $user_id
+ * @property string $message
+ */
 class Message extends Model
 {
     use HasFactory;
@@ -24,7 +30,12 @@ class Message extends Model
      */
     public function ticket(): BelongsTo
     {
-        return $this->belongsTo(Ticket::class, 'laravel_ticket_id');
+        $tableName = config('laravel_ticket.table_names.messages', 'messages');
+
+        return $this->belongsTo(
+            Ticket::class,
+            $tableName['columns']['ticket_foreing_id']
+        );
     }
 
     /**
@@ -35,7 +46,7 @@ class Message extends Model
     public function getTable()
     {
         return config(
-            'laravel_ticket.table_names.messages',
+            'laravel_ticket.table_names.messages.table',
             parent::getTable()
         );
     }

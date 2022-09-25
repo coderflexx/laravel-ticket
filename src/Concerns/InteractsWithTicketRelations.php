@@ -2,6 +2,8 @@
 
 namespace Coderflex\LaravelTicket\Concerns;
 
+use Illuminate\Database\Eloquent\Model;
+
 trait InteractsWithTicketRelations
 {
     /**
@@ -52,5 +54,31 @@ trait InteractsWithTicketRelations
     public function syncCategories($ids, $detaching = true)
     {
         return $this->categories()->sync($ids, $detaching);
+    }
+
+    /**
+     * Add new message on an existing ticket
+     *
+     * @param  string  $message
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function message(string $message): Model
+    {
+        return $this->messageAsUser(auth()->user(), $message);
+    }
+
+    /**
+     * Add new message on an existing ticket as a custom user
+     *
+     * @param  \Illuminate\Database\Eloquent\Model|null  $user
+     * @param  string  $message
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function messageAsUser(?Model $user, string $message): Model
+    {
+        return $this->messages()->create([
+            'user_id' => $user->id, // @phpstan-ignore-line
+            'message' => $message,
+        ]);
     }
 }

@@ -52,9 +52,14 @@ class Ticket extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function comments(): HasMany
+    public function messages(): HasMany
     {
-        return $this->hasMany(Message::class);
+        $tableName = config('laravel_ticket.table_names.messages', 'messages');
+
+        return $this->hasMany(
+            Message::class,
+            (string) $tableName['columns']['ticket_foreing_id'],
+        );
     }
 
     /**
