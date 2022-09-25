@@ -130,7 +130,7 @@ public function store(Request $request)
 ### Ticket API Methods
 The `ticket` model came with a handy methods to use, to make your building process easy and fast, and here is the list of the availabel __API__:
 
-| Method  | Arguments  |  Example | Description  | Chainable |
+| Method  | Arguments  |  Description  |  Example  | Chainable |
 |---|---|---|---|---|
 |  `archive` |`void` | archive the ticket  | `$ticket->archive()` | ✓
 |  `close` |`void` | close the ticket  | `$ticket->close()` | ✓
