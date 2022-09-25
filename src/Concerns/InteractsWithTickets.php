@@ -9,37 +9,43 @@ trait InteractsWithTickets
     /**
      * Archive the ticket
      *
-     * @return bool
+     * @return self
      */
-    public function archive(): bool
+    public function archive(): self
     {
-        return $this->update([
+        $this->update([
             'status' => Status::ARCHIVED->value,
         ]);
+
+        return $this;
     }
 
     /**
      * Close the ticket
      *
-     * @return bool
+     * @return self
      */
-    public function close(): bool
+    public function close(): self
     {
-        return $this->update([
+        $this->update([
             'status' => Status::CLOSED->value,
         ]);
+
+        return $this;
     }
 
     /**
      * Reopen the ticket
      *
-     * @return bool
+     * @return self
      */
-    public function reopen(): bool
+    public function reopen(): self
     {
-        return $this->update([
+        $this->update([
             'status' => Status::OPEN->value,
         ]);
+
+        return $this;
     }
 
     /**
@@ -125,87 +131,101 @@ trait InteractsWithTickets
     /**
      * Mark the ticket as resolved
      *
-     * @return bool
+     * @return self
      */
-    public function markAsResolved(): bool
+    public function markAsResolved(): self
     {
-        return $this->update([
+        $this->update([
             'is_resolved' => true,
         ]);
+
+        return $this;
     }
 
     /**
      * Mark the ticket as locked
      *
-     * @return bool
+     * @return self
      */
-    public function markAsLocked(): bool
+    public function markAsLocked(): self
     {
-        return $this->update([
+        $this->update([
             'is_locked' => true,
         ]);
+
+        return $this;
     }
 
     /**
      * Mark the ticket as locked
      *
-     * @return bool
+     * @return self
      */
-    public function markAsUnlocked(): bool
+    public function markAsUnlocked(): self
     {
-        return $this->update([
+        $this->update([
             'is_locked' => false,
         ]);
+
+        return $this;
     }
 
     /**
      * Mark the ticket as archived
      *
-     * @return bool
+     * @return self
      */
-    public function markAsArchived(): bool
+    public function markAsArchived(): self
     {
-        return $this->update([
+        $this->update([
             'status' => Status::ARCHIVED->value,
         ]);
+
+        return $this;
     }
 
     /**
      * Close the ticket and mark it as resolved
      *
-     * @return bool
+     * @return self
      */
-    public function closeAsResolved(): bool
+    public function closeAsResolved(): self
     {
-        return $this->update([
+        $this->update([
             'status' => Status::CLOSED->value,
             'is_resolved' => true,
         ]);
+
+        return $this;
     }
 
     /**
      * Close the ticket and mark it as unresolved
      *
-     * @return bool
+     * @return self
      */
-    public function closeAsUnResolved(): bool
+    public function closeAsUnResolved(): self
     {
-        return $this->update([
+        $this->update([
             'status' => Status::CLOSED->value,
             'is_resolved' => false,
         ]);
+
+        return $this;
     }
 
     /**
      * Reopen the ticket and mark it as resolved
      *
-     * @return bool
+     * @return self
      */
-    public function reopenAsUnresolved(): bool
+    public function reopenAsUnresolved(): self
     {
-        return $this->update([
+        $this->update([
             'status' => Status::OPEN->value,
             'is_resolved' => false,
         ]);
+
+        return $this;
     }
 }
