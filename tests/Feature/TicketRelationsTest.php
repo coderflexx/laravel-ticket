@@ -1,5 +1,6 @@
 <?php
 
+use Coderflex\LaravelTicket\Models\Category;
 use Coderflex\LaravelTicket\Models\Label;
 use Coderflex\LaravelTicket\Models\Ticket;
 use Coderflex\LaravelTicket\Tests\Models\User;
@@ -45,3 +46,34 @@ it('sync labels to a ticket without detaching', function () {
 
     $this->assertEquals($ticket->labels->count(), 5);
 });
+
+it('associates categories to a ticket', function () {
+    $categories = Category::factory()->times(3)->create();
+    $ticket = Ticket::factory()->create();
+
+    $ticket->attachCategories($categories->pluck('id'));
+
+    $this->assertEquals($ticket->categories->count(), 3);
+});
+
+it('sync categories to a ticket', function () {
+    $categories = Category::factory()->times(2)->create();
+    $ticket = Ticket::factory()->create();
+
+    $ticket->syncCategories($categories->pluck('id'));
+
+    $this->assertEquals($ticket->categories->count(), 2);
+});
+
+it('sync categories to a ticket without detaching', function () {
+    $categories = Category::factory()->times(3)->create();
+    $ticket = Ticket::factory()->create();
+    $ticket->attachCategories($categories->pluck('id'));
+
+    $anotherCategories = Category::factory()->times(2)->create();
+
+    $ticket->syncCategories($anotherCategories->pluck('id'), false);
+
+    $this->assertEquals($ticket->categories->count(), 5);
+});
+
