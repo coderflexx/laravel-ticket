@@ -3,10 +3,10 @@
     <br><br>
 </p>
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/coderflexx/laravel-ticket.svg?style=flat-square)](https://packagist.org/packages/coderflexx/laravel-ticket)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/coderflex/laravel-ticket.svg?style=flat-square)](https://packagist.org/packages/coderflex/laravel-ticket)
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/coderflexx/laravel-ticket/run-tests?label=tests)](https://github.com/coderflexx/laravel-ticket/actions?query=workflow%3Arun-tests+branch%3Amain)
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/coderflexx/laravel-ticket/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/coderflexx/laravel-ticket/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/coderflexx/laravel-ticket.svg?style=flat-square)](https://packagist.org/packages/coderflexx/laravel-ticket)
+[![Total Downloads](https://img.shields.io/packagist/dt/coderflex/laravel-ticket.svg?style=flat-square)](https://packagist.org/packages/coderflex/laravel-ticket)
 
 - [Introduction](#introduction)
 - [Installation](#installation)
