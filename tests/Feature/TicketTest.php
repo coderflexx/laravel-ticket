@@ -230,6 +230,20 @@ it('can mark a ticket as locked & unlocked', function () {
     $this->assertTrue($lockedTicket->isLocked());
 });
 
+it('ensures ticket methods as chainable', function () {
+    $ticket = Ticket::factory()->create([
+        'status' => 'open',
+        'is_locked' => false,
+    ]);
+
+    $ticket->archive()
+            ->markAsLocked();
+
+    $this->assertTrue($ticket->isArchived());
+    $this->assertTrue($ticket->isLocked());
+});
+
+
 it('can delete a ticket', function () {
     $ticket = Ticket::factory()->create();
 

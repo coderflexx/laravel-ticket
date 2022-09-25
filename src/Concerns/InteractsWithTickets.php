@@ -16,7 +16,6 @@ trait InteractsWithTickets
         $this->update([
             'status' => Status::ARCHIVED->value,
         ]);
-
         return $this;
     }
 
