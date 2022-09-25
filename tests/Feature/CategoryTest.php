@@ -24,7 +24,7 @@ it('can deattach category to a ticket', function () {
 });
 
 it('gets categories by visibility status', function () {
-    $categories = Category::factory()->times(10)->create([
+    Category::factory()->times(10)->create([
         'is_visible' => true,
     ]);
 
