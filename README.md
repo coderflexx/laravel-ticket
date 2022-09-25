@@ -159,7 +159,7 @@ The __Chainable__ column, is showing the state for the method, that if it can be
 ## Ticket Relashionship API Methods
 The `ticket` model has also a list of methods for interacting with another related models
 
-| Method  | Arguments  |  Example  |  Description  |
+| Method  | Arguments  |  Description  |  Example  |
 |---|---|---|---|
 |  `attachLabels` |`mixed` id, `array` attributes, `bool` touch | associate labels into an existing ticket  | `$ticket->attachLabels([1,2,3,4])` |
 |  `syncLabels` |`Model/array` ids, `bool` detouching | associate labels into an existing ticket  | `$ticket->syncLabels([1,2,3,4])` |
