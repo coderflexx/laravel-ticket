@@ -9,7 +9,7 @@ trait HasVisibility
 {
     /**
      * Determine wheather if the model is visible
-     * 
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeVisible(Builder $builder)
@@ -19,7 +19,7 @@ trait HasVisibility
 
     /**
      * Determine wheather if the model is hidden
-     * 
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeHidden(Builder $builder)

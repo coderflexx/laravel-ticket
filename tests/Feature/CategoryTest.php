@@ -29,11 +29,10 @@ it('gets categories by visibility status', function () {
     ]);
 
     Category::factory()->times(9)->create([
-        'is_visible' => false
+        'is_visible' => false,
     ]);
 
     $this->assertEquals(Category::count(), 19);
     $this->assertEquals(Category::visible()->count(), 10);
     $this->assertEquals(Category::hidden()->count(), 9);
 });
-
