@@ -11,6 +11,7 @@
 - [Introduction](#introduction)
 - [Installation](#installation)
 - [Configuration](#configuration)
+- [Preparing your model](#preparing-your-model)
 - [Usage](#usage)
   - [Ticket Table Structure](#ticket-table-structure)
   - [Message Table Structure](#message-table-structure)
@@ -21,6 +22,7 @@
   - [Ticket Relationship API Methods](#ticket-relationship-api-methods)
   - [Ticket Scopes](#ticket-scopes)
   - [Category & Label Scopes](#category--label-scopes)
+- [Handling File Upload](#handling-file-upload)
 - [Testing](#testing)
 - [Changelog](#changelog)
 - [Contributing](#contributing)
@@ -57,6 +59,8 @@ Before Running the migration, you may publish the config file, and make sure the
 ```bash
 php artisan migrate
 ```
+
+## Preparing your model
 
 Add `HasTickets` trait into your `User` model, along with `CanUseTickets` interface
 
@@ -236,21 +240,47 @@ The `ticket` model has also a list of scopes to begin filter with.
 
 | Method  | Arguments  |  Description  |  Example  |
 |---|---|---|---|
-|  `closed` |`void` | get the closed tickets  | `Ticket::closed()` |
-|  `opened` |`void` | get the opened tickets  | `Ticket::opened()` |
-|  `resolved` |`void` | get the resolved tickets  | `Ticket::resolved()` |
-|  `locked` |`void` | get the locked tickets  | `Ticket::locked()` |
-|  `unlocked` |`void` | get the unlocked tickets  | `Ticket::unlocked()` |
-|  `withLowPriority` |`void` | get the low priority tickets  | `Ticket::withLowPriority()` |
-|  `withNormalPriority` |`void` | get the normal priority tickets  | `Ticket::withNormalPriority()` |
-|  `withHighPriority` |`void` | get the high priority tickets  | `Ticket::withHighPriority()` |
-|  `withPriority` |`string` $priority | get the withPriority tickets  | `Ticket::withPriority('critical')` |
+|  `closed` |`void` | get the closed tickets  | `Ticket::closed()->get()` |
+|  `opened` |`void` | get the opened tickets  | `Ticket::opened()->get()` |
+|  `resolved` |`void` | get the resolved tickets  | `Ticket::resolved()->get()` |
+|  `locked` |`void` | get the locked tickets  | `Ticket::locked()->get()` |
+|  `unlocked` |`void` | get the unlocked tickets  | `Ticket::unlocked()->get()` |
+|  `withLowPriority` |`void` | get the low priority tickets  | `Ticket::withLowPriority()->get()` |
+|  `withNormalPriority` |`void` | get the normal priority tickets  | `Ticket::withNormalPriority()->get()` |
+|  `withHighPriority` |`void` | get the high priority tickets  | `Ticket::withHighPriority()->get()` |
+|  `withPriority` |`string` $priority | get the withPriority tickets  | `Ticket::withPriority('critical')->get()` |
 
 ### Category & Label Scopes
 | Method  | Arguments  |  Description  |  Example  |
 |---|---|---|---|
 |  `visible` |`void` | get the visible model records  | `Label::visible()->get()` |
 |  `hidden` |`void` | get the hidden model records  | `Category::visible()->get()` |
+
+## Handling File Upload
+This package doesn't came with file upload feature (yet) Instead you can use [laravel-medialibrary](https://github.com/spatie/laravel-medialibrary) by __Spatie__,
+to handle function file functionality.
+
+The steps is pretty straight forward, all what you need to do is the following.
+
+Extends the `Ticket` model, by creating a new model file in your application by
+```
+php artisan make:model Ticket
+```
+
+Then extend the base `Ticket Model`, then use `InteractWithMedia` trait by spatie package, and the interface `HasMedia`:
+
+```php
+namespace App\Models\Ticket;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+
+class Ticket extends \Coderflex\LaravelTicket\Models\Ticket implements HasMedia
+{
+    use InteractsWithMedia;
+}
+```
+
+The rest of the implementation, head to [the docs](https://spatie.be/docs/laravel-medialibrary/v10/introduction) of spatie package to know more.
 
 ## Testing
 
