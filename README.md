@@ -19,6 +19,7 @@
 - [API Methods](#api-methods)
   - [Ticket API Methods](#ticket-api-methods)
   - [Ticket Relationship API Methods](#ticket-relationship-api-methods)
+  - [Ticket Scopes](#ticket-scopes)
   - [Category & Label Scopes](#category--label-scopes)
 - [Testing](#testing)
 - [Changelog](#changelog)
@@ -229,6 +230,21 @@ The `ticket` model has also a list of methods for interacting with another relat
 > The `attachCategories` and `syncCategories` methods, is an alternative for `attach` and `sync` laravel methods, and if you want to learn more, please take a look at this [link](https://laravel.com/docs/9.x/eloquent-relationships#attaching-detaching)
 
 The `commentAsUser` accepts a user as a first argument, if it's null, the __authenticated__ user will be user as default.
+
+### Ticket Scopes
+The `ticket` model has also a list of scopes to begin filter with.
+
+| Method  | Arguments  |  Description  |  Example  |
+|---|---|---|---|
+|  `closed` |`void` | get the closed tickets  | `Ticket::closed()` |
+|  `opened` |`void` | get the opened tickets  | `Ticket::opened()` |
+|  `resolved` |`void` | get the resolved tickets  | `Ticket::resolved()` |
+|  `locked` |`void` | get the locked tickets  | `Ticket::locked()` |
+|  `unlocked` |`void` | get the unlocked tickets  | `Ticket::unlocked()` |
+|  `withLowPriority` |`void` | get the low priority tickets  | `Ticket::withLowPriority()` |
+|  `withNormalPriority` |`void` | get the normal priority tickets  | `Ticket::withNormalPriority()` |
+|  `withHighPriority` |`void` | get the high priority tickets  | `Ticket::withHighPriority()` |
+|  `withPriority` |`string` $priority | get the withPriority tickets  | `Ticket::withPriority('critical')` |
 
 ### Category & Label Scopes
 | Method  | Arguments  |  Description  |  Example  |
