@@ -8,9 +8,27 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/coderflexx/laravel-ticket/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/coderflexx/laravel-ticket/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/coderflexx/laravel-ticket.svg?style=flat-square)](https://packagist.org/packages/coderflexx/laravel-ticket)
 
+- [Introduction](#introduction)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Usage](#usage)
+  - [Ticket Table Structure](#ticket-table-structure)
+  - [Message Table Structure](#message-table-structure)
+  - [Label Table Structure](#label-table-structure)
+  - [Category Table Structure](#category-table-structure)
+- [API Methods](#api-methods)
+  - [Ticket API Methods](#ticket-api-methods)
+  - [Ticket Relationship API Methods](#ticket-relationship-api-methods)
+  - [Category & Label Scopes](#category--label-scopes)
+- [Testing](#testing)
+- [Changelog](#changelog)
+- [Contributing](#contributing)
+- [Security Vulnerabilities](#security-vulnerabilities)
+- [Credits](#credits)
+- [License](#license)
 
 ## Introduction
-__Laravel Ticket__ package, is a an Backend API to handle your ticket system, with an easy way.
+__Laravel Ticket__ package, is a Backend API to handle your ticket system, with an easy way.
 
 ## Installation
 
@@ -33,10 +51,25 @@ You can publish and run the migrations with:
 ```bash
 php artisan vendor:publish --tag="ticket-migrations"
 ```
-Before Running the migration, you may publish the config file, and make sure the current tables does not make a confilict with your existing application, and once you are happy with the migration table, you can run
+Before Running the migration, you may publish the config file, and make sure the current tables does not make a conflict with your existing application, and once you are happy with the migration table, you can run
 
 ```bash
 php artisan migrate
+```
+
+Add `HasTickets` trait into your `User` model, along with `CanUseTickets` interface
+
+```php
+...
+use Coderflex\LaravelTicket\Concerns\HasTickets;
+use Coderflex\LaravelTicket\Contracts\CanUseTickets;
+...
+class User extends Model implements CanUseTickets
+{
+    ...
+    use HasTickets;
+    ...
+}
 ```
 
 ## Usage
@@ -74,14 +107,39 @@ public function store(Request $request)
     return redirect(route('tickets.show', $ticket->uuid))
             ->with('success', __('Your Ticket Was created successfully.'));
 }
+
+public function createLabel()
+{
+    // If you create a label seperated from the ticket and wants to
+    // associate it to a ticket, you may do the following.
+    $label = Label::create(...);
+
+    $label->tickets()->attach($ticket);
+
+    // or maybe 
+    $label->tickets()->detach($ticket);
+}
+
+public function createCategory()
+{
+    // If you create a category/categories seperated from the ticket and wants to
+    // associate it to a ticket, you may do the following.
+    $category = Category::create(...);
+
+    $category->tickets()->attach($ticket);
+
+    // or maybe 
+    $category->tickets()->detach($ticket);
+}
 ...
 ```
+
 ### Ticket Table Structure
 
 | Column Name  | Type  |  Default  |
 |---|---|---|
-|  id |`integer` | `NOT NULL`  |
-|  uuid |`string` | `NULL`  |
+|  ID |`integer` | `NOT NULL`  |
+|  UUID |`string` | `NULL`  |
 |  user_id |`integer` | `NOT NULL`  |
 |  title |`string` | `NOT NULL`  |
 |  message |`string` | `NULL`  |
@@ -96,7 +154,7 @@ public function store(Request $request)
 
 | Column Name  | Type  |  Default  |
 |---|---|---|
-|  id |`integer` | `NOT NULL`  |
+|  ID |`integer` | `NOT NULL`  |
 |  user_id |`integer` | `NOT NULL`  |
 |  ticket_id |`integer` | `NOT NULL`  |
 |  message |`string` | `NULL`  |
@@ -107,7 +165,7 @@ public function store(Request $request)
 
 | Column Name  | Type  |  Default  |
 |---|---|---|
-|  id |`integer` | `NOT NULL`  |
+|  ID |`integer` | `NOT NULL`  |
 |  name |`string` | `NULL`  |
 |  slug |`string` | `NULL`  |
 |  is_visible |`boolean` | `false`  |
@@ -118,7 +176,7 @@ public function store(Request $request)
 
 | Column Name  | Type  |  Default  |
 |---|---|---|
-|  id |`integer` | `NOT NULL`  |
+|  ID |`integer` | `NOT NULL`  |
 |  name |`string` | `NULL`  |
 |  slug |`string` | `NULL`  |
 |  is_visible |`boolean` | `false`  |
@@ -128,7 +186,7 @@ public function store(Request $request)
 ## API Methods
 
 ### Ticket API Methods
-The `ticket` model came with a handy methods to use, to make your building process easy and fast, and here is the list of the availabel __API__:
+The `ticket` model came with handy methods to use, to make your building process easy and fast, and here is the list of the available __API__:
 
 | Method  | Arguments  |  Description  |  Example  | Chainable |
 |---|---|---|---|---|
@@ -146,7 +204,7 @@ The `ticket` model came with a handy methods to use, to make your building proce
 |  `isOpen` |`void` | check if the ticket open  | `$ticket->isOpen()` | ✗
 |  `isClosed` |`void` | check if the ticket closed  | `$ticket->isClosed()` | ✗
 |  `isResolved` |`void` | check if the ticket has a resolved status  | `$ticket->isResolved()` | ✗
-|  `isUnresolved` |`void` | check if the ticket has a unresolved status  | `$ticket->isUnresolved()` | ✗
+|  `isUnresolved` |`void` | check if the ticket has an unresolved status  | `$ticket->isUnresolved()` | ✗
 |  `isLocked` |`void` | check if the ticket is locked  | `$ticket->isLocked()` | ✗
 |  `isUnlocked` |`void` | check if the ticket is unlocked  | `$ticket->isUnlocked()` | ✗
 
@@ -156,21 +214,27 @@ The __Chainable__ column, is showing the state for the method, that if it can be
             ->close()
             ->markAsResolved();
 ```
-## Ticket Relashionship API Methods
+### Ticket Relationship API Methods
 The `ticket` model has also a list of methods for interacting with another related models
 
 | Method  | Arguments  |  Description  |  Example  |
 |---|---|---|---|
-|  `attachLabels` |`mixed` id, `array` attributes, `bool` touch | associate labels into an existing ticket  | `$ticket->attachLabels([1,2,3,4])` |
-|  `syncLabels` |`Model/array` ids, `bool` detouching | associate labels into an existing ticket  | `$ticket->syncLabels([1,2,3,4])` |
-|  `attachCategories` |`mixed` id, `array` attributes, `bool` touch | associate categories into an existing ticket  | `$ticket->attachCategories([1,2,3,4])` |
-|  `syncCategories` |`Model/array` ids, `bool` detouching | associate categories into an existing ticket  | `$ticket->syncCategories([1,2,3,4])` |
+|  `attachLabels` |`mixed` ID, `array` attributes, `bool` touch | associate labels into an existing ticket  | `$ticket->attachLabels([1,2,3,4])` |
+|  `syncLabels` |`Model/array` IDs, `bool` detouching | associate labels into an existing ticket  | `$ticket->syncLabels([1,2,3,4])` |
+|  `attachCategories` |`mixed` ID, `array` attributes, `bool` touch | associate categories into an existing ticket  | `$ticket->attachCategories([1,2,3,4])` |
+|  `syncCategories` |`Model/array` IDs, `bool` detouching | associate categories into an existing ticket  | `$ticket->syncCategories([1,2,3,4])` |
 |  `message` |`string` message | add new message on an existing ticket  | `$ticket->message('A message in a ticket')` |
-|  `messageAsUser` |`Model/null` user, `string` message | add new message on an existing ticket as a deffrent user  | `$ticket->messageAsUser($user, 'A message in a ticket')` |
+|  `messageAsUser` |`Model/null` user, `string` message | add new message on an existing ticket as a different user  | `$ticket->messageAsUser($user, 'A message in a ticket')` |
 
 > The `attachCategories` and `syncCategories` methods, is an alternative for `attach` and `sync` laravel methods, and if you want to learn more, please take a look at this [link](https://laravel.com/docs/9.x/eloquent-relationships#attaching-detaching)
 
 The `commentAsUser` accepts a user as a first argument, if it's null, the __authenticated__ user will be user as default.
+
+### Category & Label Scopes
+| Method  | Arguments  |  Description  |  Example  |
+|---|---|---|---|
+|  `visible` |`void` | get the visible model records  | `Label::visible()->get()` |
+|  `hidden` |`void` | get the hidden model records  | `Category::visible()->get()` |
 
 ## Testing
 

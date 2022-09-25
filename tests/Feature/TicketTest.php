@@ -243,7 +243,6 @@ it('ensures ticket methods as chainable', function () {
     $this->assertTrue($ticket->isLocked());
 });
 
-
 it('can delete a ticket', function () {
     $ticket = Ticket::factory()->create();
 
