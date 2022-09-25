@@ -229,3 +229,11 @@ it('can mark a ticket as locked & unlocked', function () {
     $this->assertTrue($ticket->isUnlocked());
     $this->assertTrue($lockedTicket->isLocked());
 });
+
+it('can delete a ticket', function () {
+    $ticket = Ticket::factory()->create();
+
+    $ticket->delete();
+
+    $this->assertEquals(Ticket::count(), 0);
+});

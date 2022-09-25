@@ -119,16 +119,6 @@ trait InteractsWithTickets
     }
 
     /**
-     * Delete the ticket
-     *
-     * @return bool
-     */
-    public function delete(): bool
-    {
-        return $this->delete();
-    }
-
-    /**
      * Mark the ticket as resolved
      *
      * @return self
