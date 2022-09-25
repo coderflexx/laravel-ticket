@@ -76,4 +76,3 @@ it('sync categories to a ticket without detaching', function () {
 
     $this->assertEquals($ticket->categories->count(), 5);
 });
-
