@@ -167,9 +167,7 @@ trait InteractsWithTickets
      */
     public function markAsArchived(): self
     {
-        $this->update([
-            'status' => Status::ARCHIVED->value,
-        ]);
+        $this->archive();
 
         return $this;
     }
@@ -194,7 +192,7 @@ trait InteractsWithTickets
      *
      * @return self
      */
-    public function closeAsUnResolved(): self
+    public function closeAsUnresolved(): self
     {
         $this->update([
             'status' => Status::CLOSED->value,

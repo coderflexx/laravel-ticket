@@ -197,7 +197,7 @@ it('can mark a ticket as closed & unresolved', function () {
         'status' => 'open',
     ]);
 
-    $ticket->closeAsUnResolved();
+    $ticket->closeAsUnresolved();
 
     $this->assertTrue($ticket->isUnresolved());
     $this->assertTrue($ticket->isClosed());

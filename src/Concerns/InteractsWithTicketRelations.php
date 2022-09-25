@@ -77,7 +77,7 @@ trait InteractsWithTicketRelations
     public function messageAsUser(?Model $user, string $message): Model
     {
         return $this->messages()->create([
-            'user_id' => $user->id, // @phpstan-ignore-line
+            'user_id' => $user?->id ?? auth()->id(), // @phpstan-ignore-line
             'message' => $message,
         ]);
     }
