@@ -258,7 +258,7 @@ The `ticket` model has also a list of scopes to begin filter with.
 
 ## Handling File Upload
 This package doesn't come with file upload feature (yet) Instead you can use [laravel-medialibrary](https://github.com/spatie/laravel-medialibrary) by __Spatie__,
-to handle function file functionality.
+to handle file functionality.
 
 The steps are pretty straight forward, all what you need to do is the following.
 
