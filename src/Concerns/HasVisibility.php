@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Builder;
 trait HasVisibility
 {
     /**
-     * Determine wheather if the model is visible
+     * Determine whether if the model is visible
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
@@ -18,7 +18,7 @@ trait HasVisibility
     }
 
     /**
-     * Determine wheather if the model is hidden
+     * Determine whether if the model is hidden
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
