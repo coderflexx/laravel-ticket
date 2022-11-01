@@ -1,6 +1,7 @@
 <?php
 
 use Coderflex\LaravelTicket\Models\Ticket;
+use Coderflex\LaravelTicket\Tests\Models\User;
 
 it('filters tickets by status', function () {
     Ticket::factory()
@@ -249,4 +250,14 @@ it('can delete a ticket', function () {
     $ticket->delete();
 
     $this->assertEquals(Ticket::count(), 0);
+});
+
+it('can assign ticket to a user', function () {
+    $ticket = Ticket::factory()->create();
+    $agentUser = User::factory()->create();
+
+    $ticket->assignTo($agentUser);
+
+    expect($ticket->assigned_to_user_id)
+        ->toBe($agentUser);
 });
