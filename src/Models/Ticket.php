@@ -22,7 +22,7 @@ use Illuminate\Foundation\Auth\User;
  * @property string $status
  * @property bool $is_resolved
  * @property bool $is_locked
- * @property int $assigned_to_user_id
+ * @property int $assigned_to
  */
 class Ticket extends Model
 {
@@ -53,9 +53,9 @@ class Ticket extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function assigned_to_user(): BelongsTo
+    public function assignedToUser(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'assigned_to_user_id');
+        return $this->belongsTo(User::class, 'assigned_to');
     }
 
     /**

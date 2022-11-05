@@ -227,7 +227,7 @@ trait InteractsWithTickets
     public function assignTo(Model|int $user): self
     {
         $this->update([
-            'assigned_to_user_id' => $user,
+            'assigned_to' => $user,
         ]);
 
         return $this;

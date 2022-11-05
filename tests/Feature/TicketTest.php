@@ -252,12 +252,22 @@ it('can delete a ticket', function () {
     $this->assertEquals(Ticket::count(), 0);
 });
 
-it('can assign ticket to a user', function () {
+it('can assign ticket to a user using user model', function () {
     $ticket = Ticket::factory()->create();
     $agentUser = User::factory()->create();
 
     $ticket->assignTo($agentUser);
 
-    expect($ticket->assigned_to_user_id)
+    expect($ticket->assigned_to)
         ->toBe($agentUser);
+});
+
+it('can assign ticket to a user using user id', function () {
+    $ticket = Ticket::factory()->create();
+    $agentUser = User::factory()->create();
+
+    $ticket->assignTo($agentUser->id);
+
+    expect($ticket->assigned_to)
+        ->toBe($agentUser->id);
 });
