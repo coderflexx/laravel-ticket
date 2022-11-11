@@ -40,6 +40,7 @@ return [
              */
             'columns' => [
                 'ticket_foreing_id' => 'ticket_id',
+                'user_foreign_id' => 'user_id',
             ],
         ],
         /**

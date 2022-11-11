@@ -46,7 +46,12 @@ class Message extends Model
      */
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        $tableName = config('laravel_ticket.table_names.messages', 'messages');
+
+        return $this->belongsTo(
+            User::class,
+            $tableName['columns']['user_foreing_id']
+        );
     }
 
     /**
