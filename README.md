@@ -256,7 +256,7 @@ The `ticket` model has also a list of scopes to begin filter with.
 | Method  | Arguments  |  Description  |  Example  |
 |---|---|---|---|
 |  `visible` |`void` | get the visible model records  | `Label::visible()->get()` |
-|  `hidden` |`void` | get the hidden model records  | `Category::visible()->get()` |
+|  `hidden` |`void` | get the hidden model records  | `Category::hidden()->get()` |
 
 ## Handling File Upload
 This package doesn't come with file upload feature (yet) Instead you can use [laravel-medialibrary](https://github.com/spatie/laravel-medialibrary) by __Spatie__,
