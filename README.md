@@ -4,8 +4,8 @@
 </p>
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/coderflex/laravel-ticket.svg?style=flat-square)](https://packagist.org/packages/coderflex/laravel-ticket)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/coderflexx/laravel-ticket/run-tests?label=tests)](https://github.com/coderflexx/laravel-ticket/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/coderflexx/laravel-ticket/Fix%20PHP%20code%20style%20issues?label=code%20style)](https://github.com/coderflexx/laravel-ticket/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/coderflexx/laravel-ticket/run-tests.yml?branch=main&label=test)](https://github.com/coderflexx/laravel-ticket/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/coderflexx/laravel-ticket/phpstan.yml?branch=main&label=code%20style)](https://github.com/coderflexx/laravel-ticket/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/coderflex/laravel-ticket.svg?style=flat-square)](https://packagist.org/packages/coderflex/laravel-ticket)
 
 - [Introduction](#introduction)
@@ -21,7 +21,7 @@
   - [Ticket API Methods](#ticket-api-methods)
   - [Ticket Relationship API Methods](#ticket-relationship-api-methods)
   - [Ticket Scopes](#ticket-scopes)
-  - [Category & Label Scopes](#category--label-scopes)
+  - [Category \& Label Scopes](#category--label-scopes)
 - [Handling File Upload](#handling-file-upload)
 - [Testing](#testing)
 - [Changelog](#changelog)
@@ -256,7 +256,7 @@ The `ticket` model has also a list of scopes to begin filter with.
 | Method  | Arguments  |  Description  |  Example  |
 |---|---|---|---|
 |  `visible` |`void` | get the visible model records  | `Label::visible()->get()` |
-|  `hidden` |`void` | get the hidden model records  | `Category::hidden()->get()` |
+|  `hidden` |`void` | get the hidden model records  | `Category::visible()->get()` |
 
 ## Handling File Upload
 This package doesn't come with file upload feature (yet) Instead you can use [laravel-medialibrary](https://github.com/spatie/laravel-medialibrary) by __Spatie__,
