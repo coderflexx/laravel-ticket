@@ -14,7 +14,7 @@ trait HasVisibility
      */
     public function scopeVisible(Builder $builder)
     {
-        return $builder->where('is_visible', Visibility::VISIBLE->value);
+        return $builder->where($this->qualifyColumn('is_visible'), Visibility::VISIBLE->value);
     }
 
     /**
@@ -24,6 +24,6 @@ trait HasVisibility
      */
     public function scopeHidden(Builder $builder)
     {
-        return $builder->where('is_visible', Visibility::HIDDEN->value);
+        return $builder->where($this->qualifyColumn('is_visible'), Visibility::HIDDEN->value);
     }
 }
