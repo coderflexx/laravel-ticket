@@ -19,7 +19,7 @@ it('message can be associated to a user', function () {
     $user = User::factory()->create([
         'name' => 'Oussama',
     ]);
-    
+
     $message = Message::factory()->create();
 
     $message->user()->associate($user);

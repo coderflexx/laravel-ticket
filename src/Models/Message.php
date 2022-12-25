@@ -40,7 +40,7 @@ class Message extends Model
 
     /**
      * Get Message Relationship
-     * 
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user(): BelongsTo
