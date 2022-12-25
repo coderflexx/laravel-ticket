@@ -39,6 +39,7 @@ return [
              * @see https://laravel.com/docs/9.x/eloquent-relationships#one-to-many
              */
             'columns' => [
+                'user_foreing_id' => 'user_id',
                 'ticket_foreing_id' => 'ticket_id',
             ],
         ],
