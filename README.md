@@ -152,7 +152,7 @@ public function createCategory()
 |  status |`string` | `open`  |
 |  is_resolved |`boolean` | `false`  |
 |  is_locked |`boolean` | `false`  |
-| assigned_to_user_id | `integer` | `NULL` |
+| assigned_to | `integer` | `NULL` |
 |  created_at |`timestamp` | `NULL`  |
 |  updated_at |`timestamp` | `NULL`  |
 
