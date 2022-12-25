@@ -39,6 +39,21 @@ class Message extends Model
     }
 
     /**
+     * Get Message Relationship
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user(): BelongsTo
+    {
+        $tableName = config('laravel_ticket.table_names.messages', 'message');
+
+        return $this->belongsTo(
+            config('auth.providers.users.model'),
+            $tableName['columns']['user_foreing_id']
+        );
+    }
+
+    /**
      * Get the table associated with the model.
      *
      * @return string
