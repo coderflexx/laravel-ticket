@@ -10,8 +10,6 @@ trait HasTickets
 {
     /**
      * Get User tickets relationship
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function tickets(): HasMany
     {
@@ -20,8 +18,6 @@ trait HasTickets
 
     /**
      * Get User tickets relationship
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function messages(): HasMany
     {

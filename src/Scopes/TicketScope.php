@@ -10,8 +10,6 @@ trait TicketScope
 {
     /**
      * Get closed tickets
-     *
-     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeClosed(Builder $builder): Builder
     {
@@ -20,8 +18,6 @@ trait TicketScope
 
     /**
      * Get opened tickets
-     *
-     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeOpened(Builder $builder): Builder
     {
@@ -30,8 +26,6 @@ trait TicketScope
 
     /**
      * Get resolved tickets
-     *
-     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeResolved(Builder $builder): Builder
     {
@@ -40,8 +34,6 @@ trait TicketScope
 
     /**
      * Get unresolved tickets
-     *
-     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeUnresolved(Builder $builder): Builder
     {
@@ -50,8 +42,6 @@ trait TicketScope
 
     /**
      * Get locked tickets
-     *
-     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeLocked(Builder $builder): Builder
     {
@@ -60,8 +50,6 @@ trait TicketScope
 
     /**
      * Get unlocked tickets
-     *
-     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeUnlocked(Builder $builder): Builder
     {
@@ -70,8 +58,6 @@ trait TicketScope
 
     /**
      * Get custom priority tickets
-     *
-     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeWithPriority(Builder $builder, string $priority): Builder
     {
@@ -80,8 +66,6 @@ trait TicketScope
 
     /**
      * Get low priority tickets
-     *
-     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeWithLowPriority(Builder $builder): Builder
     {
@@ -90,8 +74,6 @@ trait TicketScope
 
     /**
      * Get normal priority tickets
-     *
-     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeWithNormalPriority(Builder $builder): Builder
     {
@@ -100,8 +82,6 @@ trait TicketScope
 
     /**
      * Get high priority tickets
-     *
-     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeWithHighPriority(Builder $builder): Builder
     {
