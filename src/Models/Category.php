@@ -21,8 +21,6 @@ class Category extends Model
 
     /**
      * Get Tickets RelationShip
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function tickets(): BelongsToMany
     {

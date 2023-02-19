@@ -39,8 +39,6 @@ class Ticket extends Model
 
     /**
      * Get User RelationShip
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user(): BelongsTo
     {
@@ -49,8 +47,6 @@ class Ticket extends Model
 
     /**
      * Get Assigned To User RelationShip
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function assignedToUser(): BelongsTo
     {
@@ -59,8 +55,6 @@ class Ticket extends Model
 
     /**
      * Get Messages RelationShip
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function messages(): HasMany
     {
@@ -74,8 +68,6 @@ class Ticket extends Model
 
     /**
      * Get Categories RelationShip
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function categories(): BelongsToMany
     {
@@ -91,8 +83,6 @@ class Ticket extends Model
 
     /**
      * Get Labels RelationShip
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function labels(): BelongsToMany
     {
