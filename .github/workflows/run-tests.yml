@@ -19,7 +19,6 @@ jobs:
         include:
           - laravel: 9.*
             testbench: 7.*
-        include:
           - laravel: 10.*
             testbench: 8.*
 
