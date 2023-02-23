@@ -25,8 +25,6 @@ class Message extends Model
 
     /**
      * Get Ticket RelationShip
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function ticket(): BelongsTo
     {
@@ -40,8 +38,6 @@ class Message extends Model
 
     /**
      * Get Message Relationship
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user(): BelongsTo
     {

@@ -10,7 +10,6 @@ trait InteractsWithTicketRelations
      * Associate Labels into an existing ticket
      *
      * @param  mixed  $id
-     * @param  array  $attributes
      * @param  bool  $touch
      * @return void
      */
@@ -35,7 +34,6 @@ trait InteractsWithTicketRelations
      * Associate Categories into an existing ticket
      *
      * @param  mixed  $id
-     * @param  array  $attributes
      * @param  bool  $touch
      * @return void
      */
@@ -58,9 +56,6 @@ trait InteractsWithTicketRelations
 
     /**
      * Add new message on an existing ticket
-     *
-     * @param  string  $message
-     * @return \Illuminate\Database\Eloquent\Model
      */
     public function message(string $message): Model
     {
@@ -69,10 +64,6 @@ trait InteractsWithTicketRelations
 
     /**
      * Add new message on an existing ticket as a custom user
-     *
-     * @param  \Illuminate\Database\Eloquent\Model|null  $user
-     * @param  string  $message
-     * @return \Illuminate\Database\Eloquent\Model
      */
     public function messageAsUser(?Model $user, string $message): Model
     {

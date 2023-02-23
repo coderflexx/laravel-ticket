@@ -9,8 +9,6 @@ trait InteractsWithTickets
 {
     /**
      * Archive the ticket
-     *
-     * @return self
      */
     public function archive(): self
     {
@@ -23,8 +21,6 @@ trait InteractsWithTickets
 
     /**
      * Close the ticket
-     *
-     * @return self
      */
     public function close(): self
     {
@@ -37,8 +33,6 @@ trait InteractsWithTickets
 
     /**
      * Reopen the ticket
-     *
-     * @return self
      */
     public function reopen(): self
     {
@@ -51,8 +45,6 @@ trait InteractsWithTickets
 
     /**
      * Determine if the ticket is archived
-     *
-     * @return bool
      */
     public function isArchived(): bool
     {
@@ -61,8 +53,6 @@ trait InteractsWithTickets
 
     /**
      * Determine if the ticket is open
-     *
-     * @return bool
      */
     public function isOpen(): bool
     {
@@ -71,8 +61,6 @@ trait InteractsWithTickets
 
     /**
      * Determine if the ticket is closed
-     *
-     * @return bool
      */
     public function isClosed(): bool
     {
@@ -81,8 +69,6 @@ trait InteractsWithTickets
 
     /**
      * Determine if the ticket is resolved
-     *
-     * @return bool
      */
     public function isResolved(): bool
     {
@@ -91,8 +77,6 @@ trait InteractsWithTickets
 
     /**
      * Determine if the ticket is unresolved
-     *
-     * @return bool
      */
     public function isUnresolved(): bool
     {
@@ -101,8 +85,6 @@ trait InteractsWithTickets
 
     /**
      * Determine if the ticket is locked
-     *
-     * @return bool
      */
     public function isLocked(): bool
     {
@@ -111,8 +93,6 @@ trait InteractsWithTickets
 
     /**
      * Determine if the ticket is unresolved
-     *
-     * @return bool
      */
     public function isUnlocked(): bool
     {
@@ -121,8 +101,6 @@ trait InteractsWithTickets
 
     /**
      * Mark the ticket as resolved
-     *
-     * @return self
      */
     public function markAsResolved(): self
     {
@@ -135,8 +113,6 @@ trait InteractsWithTickets
 
     /**
      * Mark the ticket as locked
-     *
-     * @return self
      */
     public function markAsLocked(): self
     {
@@ -149,8 +125,6 @@ trait InteractsWithTickets
 
     /**
      * Mark the ticket as locked
-     *
-     * @return self
      */
     public function markAsUnlocked(): self
     {
@@ -163,8 +137,6 @@ trait InteractsWithTickets
 
     /**
      * Mark the ticket as archived
-     *
-     * @return self
      */
     public function markAsArchived(): self
     {
@@ -175,8 +147,6 @@ trait InteractsWithTickets
 
     /**
      * Close the ticket and mark it as resolved
-     *
-     * @return self
      */
     public function closeAsResolved(): self
     {
@@ -190,8 +160,6 @@ trait InteractsWithTickets
 
     /**
      * Close the ticket and mark it as unresolved
-     *
-     * @return self
      */
     public function closeAsUnresolved(): self
     {
@@ -205,8 +173,6 @@ trait InteractsWithTickets
 
     /**
      * Reopen the ticket and mark it as resolved
-     *
-     * @return self
      */
     public function reopenAsUnresolved(): self
     {
@@ -220,9 +186,6 @@ trait InteractsWithTickets
 
     /**
      * Add new message on an existing ticket as a custom user
-     *
-     * @param  \Illuminate\Database\Eloquent\Model|int  $user
-     * @return self
      */
     public function assignTo(Model|int $user): self
     {
