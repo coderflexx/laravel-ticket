@@ -195,4 +195,31 @@ trait InteractsWithTickets
 
         return $this;
     }
+
+    /**
+     * make ticket priority as low
+     */
+    public function makePriorityAsLow(): self
+    {
+        $this->update(['priority' => Priority::LOW->value]);
+        return $this;
+    }
+
+    /**
+     * make ticket priority as normal
+     */
+    public function makePriorityAsNormal(): self
+    {
+        $this->update(['priority' => Priority::NORMAL->value]);
+        return $this;
+    }
+
+    /**
+     * make ticket priority as high
+     */
+    public function makePriorityAsHigh(): self
+    {
+        $this->update(['priority' => Priority::HIGH->value]);
+        return $this;
+    }
 }

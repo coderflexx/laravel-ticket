@@ -214,6 +214,9 @@ The `ticket` model came with handy methods to use, to make your building process
 | `isLocked`           |`void` | check if the ticket is locked                 | `$ticket->isLocked()`                               | ✗
 | `isUnlocked`         |`void` | check if the ticket is unlocked               | `$ticket->isUnlocked()`                             | ✗
 | `assignTo`           |`void` | assign ticket to a user                       | `$ticket->assignTo($user)` or `$ticket->assignTo(2)` | ✓
+| `makePriorityAsLow`  |`void` | make ticket priority as low                   | `$ticket->makePriorityAsLow()`                      | ✓
+| `makePriorityAsNormal`|`void`| make ticket priority as normal                | `$ticket->makePriorityAsNormal()`                   | ✓
+| `makePriorityAsHigh` |`void` | make ticket priority as high                  | `$ticket->makePriorityAsHigh()`                     | ✓
 
 The __Chainable__ column, is showing the state for the method, that if it can be chained or not, something like
 ```php
