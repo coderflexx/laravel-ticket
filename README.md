@@ -247,6 +247,8 @@ The `ticket` model has also a list of scopes to begin filter with.
 |---|---|---|---|
 |  `closed` |`void` | get the closed tickets  | `Ticket::closed()->get()` |
 |  `opened` |`void` | get the opened tickets  | `Ticket::opened()->get()` |
+|  `archived` |`void` | get the archived tickets  | `Ticket::archived()->get()` |
+|  `unArchived` |`void` | get the unArchived tickets  | `Ticket::unArchived()->get()` |
 |  `resolved` |`void` | get the resolved tickets  | `Ticket::resolved()->get()` |
 |  `locked` |`void` | get the locked tickets  | `Ticket::locked()->get()` |
 |  `unlocked` |`void` | get the unlocked tickets  | `Ticket::unlocked()->get()` |
