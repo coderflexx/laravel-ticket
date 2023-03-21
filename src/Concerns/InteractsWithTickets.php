@@ -4,6 +4,7 @@ namespace Coderflex\LaravelTicket\Concerns;
 
 use Coderflex\LaravelTicket\Enums\Status;
 use Illuminate\Database\Eloquent\Model;
+use Coderflex\LaravelTicket\Enums\Priority;
 
 trait InteractsWithTickets
 {
