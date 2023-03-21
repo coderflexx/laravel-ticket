@@ -16,9 +16,17 @@ it('filters tickets by status', function () {
                 'status' => 'closed',
             ]);
 
-    $this->assertEquals(Ticket::count(), 10);
+    Ticket::factory()
+            ->times(6)
+            ->create([
+                'status' => 'archived',
+            ]);
+
+    $this->assertEquals(Ticket::count(), 16);
     $this->assertEquals(Ticket::opened()->count(), 3);
     $this->assertEquals(Ticket::closed()->count(), 7);
+    $this->assertEquals(Ticket::archived()->count(), 6);
+    $this->assertEquals(Ticket::unArchived()->count(), 10);
 });
 
 it('filters tickets by resolved status', function () {
@@ -270,4 +278,34 @@ it('can assign ticket to a user using user id', function () {
 
     expect($ticket->assigned_to)
         ->toBe($agentUser->id);
+});
+
+it('can mark a ticket priority as low', function () {
+    $ticket = Ticket::factory()->create([
+        'priority' => 'high',
+    ]);
+
+    $ticket->makePriorityAsLow();
+
+    $this->assertEquals($ticket->priority, 'low');
+});
+
+it('can mark a ticket priority as normal', function () {
+    $ticket = Ticket::factory()->create([
+        'priority' => 'high',
+    ]);
+
+    $ticket->makePriorityAsNormal();
+
+    $this->assertEquals($ticket->priority, 'normal');
+});
+
+it('can mark a ticket priority as high', function () {
+    $ticket = Ticket::factory()->create([
+        'priority' => 'low',
+    ]);
+
+    $ticket->makePriorityAsHigh();
+
+    $this->assertEquals($ticket->priority, 'high');
 });
