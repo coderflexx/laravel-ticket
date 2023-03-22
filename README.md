@@ -214,6 +214,9 @@ The `ticket` model came with handy methods to use, to make your building process
 | `isLocked`           |`void` | check if the ticket is locked                 | `$ticket->isLocked()`                               | ✗
 | `isUnlocked`         |`void` | check if the ticket is unlocked               | `$ticket->isUnlocked()`                             | ✗
 | `assignTo`           |`void` | assign ticket to a user                       | `$ticket->assignTo($user)` or `$ticket->assignTo(2)` | ✓
+| `makePriorityAsLow`  |`void` | make ticket priority as low                   | `$ticket->makePriorityAsLow()`                      | ✓
+| `makePriorityAsNormal`|`void`| make ticket priority as normal                | `$ticket->makePriorityAsNormal()`                   | ✓
+| `makePriorityAsHigh` |`void` | make ticket priority as high                  | `$ticket->makePriorityAsHigh()`                     | ✓
 
 The __Chainable__ column, is showing the state for the method, that if it can be chained or not, something like
 ```php
@@ -244,6 +247,8 @@ The `ticket` model has also a list of scopes to begin filter with.
 |---|---|---|---|
 |  `closed` |`void` | get the closed tickets  | `Ticket::closed()->get()` |
 |  `opened` |`void` | get the opened tickets  | `Ticket::opened()->get()` |
+|  `archived` |`void` | get the archived tickets  | `Ticket::archived()->get()` |
+|  `unArchived` |`void` | get the unArchived tickets  | `Ticket::unArchived()->get()` |
 |  `resolved` |`void` | get the resolved tickets  | `Ticket::resolved()->get()` |
 |  `locked` |`void` | get the locked tickets  | `Ticket::locked()->get()` |
 |  `unlocked` |`void` | get the unlocked tickets  | `Ticket::unlocked()->get()` |
