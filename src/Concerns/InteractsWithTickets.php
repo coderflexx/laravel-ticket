@@ -192,7 +192,7 @@ trait InteractsWithTickets
     {
 
         if ($user instanceof Model) {
-            $id = $user->id;
+            $id = $user->getKey();
         }else{
             $id = $user->id;
         }
