@@ -31,7 +31,7 @@ class Message extends Model
         $tableName = config('laravel_ticket.table_names.messages', 'messages');
 
         return $this->belongsTo(
-            Ticket::class,
+            config('laravel_ticket.models.ticket', Ticket::class),
             $tableName['columns']['ticket_foreing_id']
         );
     }

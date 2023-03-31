@@ -24,7 +24,7 @@ class Category extends Model
      */
     public function tickets(): BelongsToMany
     {
-        return $this->belongsToMany(Ticket::class);
+        return $this->belongsToMany(config('laravel_ticket.models.ticket', Ticket::class));
     }
 
     /**
