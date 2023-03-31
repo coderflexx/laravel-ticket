@@ -65,7 +65,7 @@ trait InteractsWithTickets
      */
     public function isClosed(): bool
     {
-        return ! $this->isOpen();
+        return !$this->isOpen();
     }
 
     /**
@@ -81,7 +81,7 @@ trait InteractsWithTickets
      */
     public function isUnresolved(): bool
     {
-        return ! $this->isResolved();
+        return !$this->isResolved();
     }
 
     /**
@@ -97,7 +97,7 @@ trait InteractsWithTickets
      */
     public function isUnlocked(): bool
     {
-        return ! $this->isLocked();
+        return !$this->isLocked();
     }
 
     /**
@@ -190,8 +190,15 @@ trait InteractsWithTickets
      */
     public function assignTo(Model|int $user): self
     {
+
+        if ($user instanceof Model) {
+            $id = $user->getKey();
+        }else{
+            $id = $user->id;
+        }
+
         $this->update([
-            'assigned_to' => $user,
+            'assigned_to' => $id,
         ]);
 
         return $this;
