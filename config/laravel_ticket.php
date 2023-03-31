@@ -12,6 +12,12 @@ return [
     | instruction before you change the values.
     |
     */
+    'models' => [
+        'ticket' => Ticket::class,
+        'message' => Message::class,
+        'category' => Category::class,
+        'labels' => Label::class
+    ],
     'table_names' => [
         /**
          * Tickets table
