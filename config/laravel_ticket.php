@@ -1,4 +1,10 @@
 <?php
+declare(strict_types=1);
+
+use Coderflex\LaravelTicket\Models\Category;
+use Coderflex\LaravelTicket\Models\Label;
+use Coderflex\LaravelTicket\Models\Message;
+use Coderflex\LaravelTicket\Models\Ticket;
 
 return [
     /*
@@ -12,6 +18,13 @@ return [
     | instruction before you change the values.
     |
     */
+    'models' => [
+        'ticket' => Ticket::class,
+        'message' => Message::class,
+        'category' => Category::class,
+        'labels' => Label::class
+    ],
+
     'table_names' => [
         /**
          * Tickets table
@@ -20,16 +33,16 @@ return [
         /**
          * Categories table for the tickets
          */
-        'categories' => 'categories',
+        'categories' => 'ticket_categories',
         /**
          * Labels table for the tickets
          */
-        'labels' => 'labels',
+        'labels' => 'ticket_labels',
         /**
-         * Messages table to appears in the ticket
+         * Messages table to appear in the ticket
          */
         'messages' => [
-            'table' => 'messages',
+            'table' => 'ticket_messages',
             /**
              * This is the foreing key for associated to the ticket
              * If you renamed the ticket table, you should consider
@@ -52,7 +65,7 @@ return [
          * @see https://laravel.com/docs/9.x/eloquent-relationships#many-to-many
          */
         'label_ticket' => [
-            'table' => 'label_ticket',
+            'table' => 'ticket_label',
             'columns' => [
                 'label_foreign_id' => 'label_id',
                 'ticket_foreign_id' => 'ticket_id',
@@ -66,7 +79,7 @@ return [
          * @see https://laravel.com/docs/9.x/eloquent-relationships#many-to-many
          */
         'category_ticket' => [
-            'table' => 'category_ticket',
+            'table' => 'ticket_category',
             'columns' => [
                 'category_foreign_id' => 'category_id',
                 'ticket_foreign_id' => 'ticket_id',
