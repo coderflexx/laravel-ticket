@@ -99,11 +99,11 @@ public function store(Request $request)
     $ticket = $user->tickets()
                     ->create($request->validated());
 
-    $categories = Category::first();
-    $labels = Label::first();
+    $category = Category::first();
+    $label = Label::first();
 
-    $ticket->attachCategories($categories);
-    $ticket->attachLabels($labels);
+    $ticket->attachCategories($category);
+    $ticket->attachLabels($label);
     
     // or you can create the categories & the tickets directly by:
     // $ticket->categories()->create(...);
