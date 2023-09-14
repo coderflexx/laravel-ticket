@@ -7,10 +7,10 @@ it('can store a label', function () {
     $ticket = Ticket::factory()->create();
 
     $label = Label::factory()
-                ->create([
-                    'name' => 'Support',
-                    'slug' => 'supoort',
-                ]);
+        ->create([
+            'name' => 'Support',
+            'slug' => 'supoort',
+        ]);
 
     $tableName = config(
         'laravel_ticket.table_names.labels',

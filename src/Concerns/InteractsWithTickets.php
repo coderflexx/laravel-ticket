@@ -2,9 +2,9 @@
 
 namespace Coderflex\LaravelTicket\Concerns;
 
+use Coderflex\LaravelTicket\Enums\Priority;
 use Coderflex\LaravelTicket\Enums\Status;
 use Illuminate\Database\Eloquent\Model;
-use Coderflex\LaravelTicket\Enums\Priority;
 
 trait InteractsWithTickets
 {
@@ -203,6 +203,7 @@ trait InteractsWithTickets
     public function makePriorityAsLow(): self
     {
         $this->update(['priority' => Priority::LOW->value]);
+
         return $this;
     }
 
@@ -212,6 +213,7 @@ trait InteractsWithTickets
     public function makePriorityAsNormal(): self
     {
         $this->update(['priority' => Priority::NORMAL->value]);
+
         return $this;
     }
 
@@ -221,6 +223,7 @@ trait InteractsWithTickets
     public function makePriorityAsHigh(): self
     {
         $this->update(['priority' => Priority::HIGH->value]);
+
         return $this;
     }
 }
