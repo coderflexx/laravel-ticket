@@ -25,10 +25,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class Ticket extends Model
 {
+    use Concerns\InteractsWithTicketRelations;
+    use Concerns\InteractsWithTickets;
     use HasFactory;
     use TicketScope;
-    use Concerns\InteractsWithTickets;
-    use Concerns\InteractsWithTicketRelations;
 
     /**
      * The attributes that aren't mass assignable.

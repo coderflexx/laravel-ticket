@@ -5,22 +5,22 @@ use Coderflex\LaravelTicket\Tests\Models\User;
 
 it('filters tickets by status', function () {
     Ticket::factory()
-            ->times(3)
-            ->create([
-                'status' => 'open',
-            ]);
+        ->times(3)
+        ->create([
+            'status' => 'open',
+        ]);
 
     Ticket::factory()
-            ->times(7)
-            ->create([
-                'status' => 'closed',
-            ]);
+        ->times(7)
+        ->create([
+            'status' => 'closed',
+        ]);
 
     Ticket::factory()
-            ->times(6)
-            ->create([
-                'status' => 'archived',
-            ]);
+        ->times(6)
+        ->create([
+            'status' => 'archived',
+        ]);
 
     $this->assertEquals(Ticket::count(), 16);
     $this->assertEquals(Ticket::opened()->count(), 3);
@@ -31,16 +31,16 @@ it('filters tickets by status', function () {
 
 it('filters tickets by resolved status', function () {
     Ticket::factory()
-            ->times(2)
-            ->create([
-                'is_resolved' => true,
-            ]);
+        ->times(2)
+        ->create([
+            'is_resolved' => true,
+        ]);
 
     Ticket::factory()
-            ->times(10)
-            ->create([
-                'is_resolved' => false,
-            ]);
+        ->times(10)
+        ->create([
+            'is_resolved' => false,
+        ]);
 
     $this->assertEquals(Ticket::count(), 12);
     $this->assertEquals(Ticket::resolved()->count(), 2);
@@ -49,16 +49,16 @@ it('filters tickets by resolved status', function () {
 
 it('filters tickets by locked status', function () {
     Ticket::factory()
-            ->times(3)
-            ->create([
-                'is_locked' => true,
-            ]);
+        ->times(3)
+        ->create([
+            'is_locked' => true,
+        ]);
 
     Ticket::factory()
-            ->times(9)
-            ->create([
-                'is_locked' => false,
-            ]);
+        ->times(9)
+        ->create([
+            'is_locked' => false,
+        ]);
 
     $this->assertEquals(Ticket::count(), 12);
     $this->assertEquals(Ticket::locked()->count(), 3);
@@ -67,28 +67,28 @@ it('filters tickets by locked status', function () {
 
 it('filters tickets by priority status', function () {
     Ticket::factory()
-            ->times(7)
-            ->create([
-                'priority' => 'low',
-            ]);
+        ->times(7)
+        ->create([
+            'priority' => 'low',
+        ]);
 
     Ticket::factory()
-            ->times(5)
-            ->create([
-                'priority' => 'normal',
-            ]);
+        ->times(5)
+        ->create([
+            'priority' => 'normal',
+        ]);
 
     Ticket::factory()
-            ->times(15)
-            ->create([
-                'priority' => 'high',
-            ]);
+        ->times(15)
+        ->create([
+            'priority' => 'high',
+        ]);
 
     Ticket::factory()
-            ->times(15)
-            ->create([
-                'priority' => 'something else',
-            ]);
+        ->times(15)
+        ->create([
+            'priority' => 'something else',
+        ]);
 
     $this->assertEquals(Ticket::count(), 42);
     $this->assertEquals(Ticket::withLowPriority()->count(), 7);
@@ -246,7 +246,7 @@ it('ensures ticket methods are chainable', function () {
     ]);
 
     $ticket->archive()
-            ->markAsLocked();
+        ->markAsLocked();
 
     $this->assertTrue($ticket->isArchived());
     $this->assertTrue($ticket->isLocked());
