@@ -14,14 +14,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\Access\Authorizable;
 
-class User extends Model implements CanUseTickets, AuthenticatableContract, AuthorizableContract, CanResetPasswordContract
+class User extends Model implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract, CanUseTickets
 {
     use Authenticatable,
         Authorizable,
         CanResetPassword,
-        MustVerifyEmail,
         HasFactory,
-        HasTickets;
+        HasTickets,
+        MustVerifyEmail;
 
     protected $guarded = [];
 }
