@@ -13,7 +13,7 @@ trait HasTickets
      */
     public function tickets(): HasMany
     {
-        return $this->hasMany(Ticket::class, 'user_id');
+        return $this->hasMany(config('laravel_ticket.models.ticket', Ticket::class), 'user_id');
     }
 
     /**
@@ -21,6 +21,6 @@ trait HasTickets
      */
     public function messages(): HasMany
     {
-        return $this->hasMany(Message::class, 'user_id');
+        return $this->hasMany(config('laravel_ticket.models.message', Message::class), 'user_id');
     }
 }
