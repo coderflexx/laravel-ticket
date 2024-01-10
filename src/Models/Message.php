@@ -32,7 +32,7 @@ class Message extends Model
 
         return $this->belongsTo(
             Ticket::class,
-            $tableName['columns']['ticket_foreing_id']
+            $tableName['columns']['ticket_foreign_id']
         );
     }
 
@@ -45,7 +45,7 @@ class Message extends Model
 
         return $this->belongsTo(
             config('auth.providers.users.model'),
-            $tableName['columns']['user_foreing_id']
+            $tableName['columns']['user_foreign_id']
         );
     }
 

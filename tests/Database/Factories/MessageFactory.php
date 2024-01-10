@@ -17,7 +17,7 @@ class MessageFactory extends Factory
 
         return [
             'user_id' => User::factory(),
-            $tableName['columns']['ticket_foreing_id'] => Ticket::factory(),
+            $tableName['columns']['ticket_foreign_id'] => Ticket::factory(),
             'message' => $this->faker->paragraph(2),
         ];
     }

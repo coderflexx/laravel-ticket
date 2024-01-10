@@ -15,8 +15,8 @@ return new class extends Migration
 
         Schema::create($tableName['table'], function (Blueprint $table) use ($tableName) {
             $table->id();
-            $table->foreignId($tableName['columns']['user_foreing_id']);
-            $table->foreignId($tableName['columns']['ticket_foreing_id']);
+            $table->foreignId($tableName['columns']['user_foreign_id']);
+            $table->foreignId($tableName['columns']['ticket_foreign_id']);
             $table->text('message');
             $table->timestamps();
         });
