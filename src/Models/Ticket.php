@@ -61,7 +61,7 @@ class Ticket extends Model
         $tableName = config('laravel_ticket.table_names.messages', 'messages');
 
         return $this->hasMany(
-            Message::class,
+            config('laravel_ticket.models.message'),
             (string) $tableName['columns']['ticket_foreign_id'],
         );
     }
@@ -74,7 +74,7 @@ class Ticket extends Model
         $table = config('laravel_ticket.table_names.category_ticket', 'category_ticket');
 
         return $this->belongsToMany(
-            Category::class,
+            config('laravel_ticket.models.category'),
             $table['table'],
             $table['columns']['ticket_foreign_id'],
             $table['columns']['category_foreign_id'],
@@ -89,7 +89,7 @@ class Ticket extends Model
         $table = config('laravel_ticket.table_names.label_ticket', 'label_ticket');
 
         return $this->belongsToMany(
-            Label::class,
+            config('laravel_ticket.models.label'),
             $table['table'],
             $table['columns']['ticket_foreign_id'],
             $table['columns']['label_foreign_id'],
@@ -104,7 +104,7 @@ class Ticket extends Model
     public function getTable()
     {
         return config(
-            'laravel_ticket.table_names.tickets',
+            'laravel_ticket.models.tickets',
             parent::getTable()
         );
     }
