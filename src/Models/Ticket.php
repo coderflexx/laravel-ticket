@@ -104,7 +104,7 @@ class Ticket extends Model
     public function getTable()
     {
         return config(
-            'laravel_ticket.models.tickets',
+            'laravel_ticket.table_names.tickets',
             parent::getTable()
         );
     }
