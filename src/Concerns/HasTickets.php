@@ -15,6 +15,7 @@ trait HasTickets
             'laravel_ticket.models.ticket',
             parent::getTable()
         );
+
         return $this->hasMany($model, 'user_id');
     }
 
@@ -27,6 +28,7 @@ trait HasTickets
             'laravel_ticket.models.message',
             parent::getTable()
         );
+
         return $this->hasMany($model, 'user_id');
     }
 }
