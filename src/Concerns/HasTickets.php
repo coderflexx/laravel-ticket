@@ -2,8 +2,6 @@
 
 namespace Coderflex\LaravelTicket\Concerns;
 
-use Coderflex\LaravelTicket\Models\Message;
-use Coderflex\LaravelTicket\Models\Ticket;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 trait HasTickets
@@ -13,7 +11,11 @@ trait HasTickets
      */
     public function tickets(): HasMany
     {
-        return $this->hasMany(Ticket::class, 'user_id');
+        $model = config(
+            'laravel_ticket.models.ticket',
+            parent::getTable()
+        );
+        return $this->hasMany($model, 'user_id');
     }
 
     /**
@@ -21,6 +23,10 @@ trait HasTickets
      */
     public function messages(): HasMany
     {
-        return $this->hasMany(Message::class, 'user_id');
+        $model = config(
+            'laravel_ticket.models.message',
+            parent::getTable()
+        );
+        return $this->hasMany($model, 'user_id');
     }
 }
