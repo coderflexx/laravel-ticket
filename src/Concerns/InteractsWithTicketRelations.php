@@ -3,6 +3,7 @@
 namespace Coderflex\LaravelTicket\Concerns;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 
 trait InteractsWithTicketRelations
 {
@@ -21,7 +22,7 @@ trait InteractsWithTicketRelations
     /**
      * Sync the intermediate tables with a list of IDs or collection of the ticket model..
      *
-     * @param  \Illuminate\Support\Collection|\Illuminate\Database\Eloquent\Model|array  $ids
+     * @param  Collection|Model|array  $ids
      * @param  bool  $detaching
      * @return array
      */
@@ -45,7 +46,7 @@ trait InteractsWithTicketRelations
     /**
      * Sync the intermediate tables with a list of IDs or collection of the ticket model..
      *
-     * @param  \Illuminate\Support\Collection|\Illuminate\Database\Eloquent\Model|array  $ids
+     * @param  Collection|Model|array  $ids
      * @param  bool  $detaching
      * @return array
      */
